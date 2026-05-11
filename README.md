@@ -143,7 +143,7 @@ lib/
 
 # 🎥 App Demo Video
 
-[▶ Watch App Demo](screenshots/Newsapp_video.mp4)
+[▶ Watch App Demo](https://drive.google.com/file/d/1giwvB1HVkcGDnpFYySmV5l8Cedk8R_aA/view?usp=drive_link)
 
 ---
 
