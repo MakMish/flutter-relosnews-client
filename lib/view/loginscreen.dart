@@ -1,81 +1,228 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:relosnews/viewmodel/loginwrapper.dart';
+import 'package:relosnews/Features/bottomsheet.dart';
+import 'package:relosnews/Features/toast.dart';
+import 'package:relosnews/Services/loginservice.dart';
+import 'package:relosnews/view/news2.dart';
+import 'package:relosnews/viewmodel/hive.dart';
+import 'package:rive/rive.dart';
+import 'package:toastification/toastification.dart';
 
-class loginscr extends StatelessWidget {
-  const loginscr({super.key});
+class animscr extends StatefulWidget {
+  const animscr({super.key});
+
+  @override
+  State<animscr> createState() => _animscrState();
+}
+
+class _animscrState extends State<animscr> {
+  late RiveState v;
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController password = TextEditingController();
-    TextEditingController email = TextEditingController();
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 30),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+    final fileLoader = FileLoader.fromAsset(
+      "assets/toy.riv",
+      riveFactory: Factory.rive,
+    );
+    TextEditingController v = TextEditingController();
+    TextEditingController x = TextEditingController();
+    return RiveWidgetBuilder(
+      fileLoader: fileLoader,
+      builder: (context, state) => switch (state) {
+        RiveLoading() => Center(child: Text("wait a minute pls😊😊")),
+        RiveLoaded() => Scaffold(
+          body:SingleChildScrollView(
+                child: Stack(
+                  children: [
+                    SizedBox(height: 20),
+                    Positioned.fill(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.pink],
+                            begin: AlignmentGeometry.topEnd,
+                            end: AlignmentGeometry.bottomLeft,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height / 2,
+                              width: MediaQuery.of(context).size.width,
+                              child: RiveWidget(
+                                controller: state.controller,
+                                fit: Fit.fitHeight,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 2,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 2,
+                                  style: BorderStyle.solid,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              hintText: "enter email ",
+                            ),
+                            controller: v,
+                            onChanged: (v) {
+                              // ignore_for_file: deprecated_member_use
+                              state.controller.stateMachine
+                                      .boolean("isFocus")!
+                                      .value =
+                                  true;
+                            },
+                          ),
+                        ),
+                        SizedBox(height: 40),
+                        Padding(
+                          padding: EdgeInsetsGeometry.all(10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 2,
+                                  style: BorderStyle.solid,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              hintText: "enter password ",
+                            ),
+                            controller: x,
+                            onTap: () {
+                              state.controller.stateMachine
+                                      .boolean("isFocus")!
+                                      .value =
+                                  false;
+                              state.controller.stateMachine
+                                      .boolean("IsPassword")!
+                                      .value =
+                                  true;
+                            },
+                            onSubmitted: (x) {
+                              state.controller.stateMachine
+                                      .boolean("IsPassword")!
+                                      .value =
+                                  false;
+                            },
+                          ),
+                        ),
+                        SizedBox(height: 90),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(28),
+                                ),
+                                maximumSize: Size(120, 55),
+                              ),
+                              onPressed: () async {
+                                WidgetsBinding.instance.addPostFrameCallback((_){
+                                  tst(context, "verifying,please wait", ToastificationType.info);
+                                });
+                                print("called");
+                                int data = await API_Services(
+                                  email: v.text.trim(),
+                                  password: x.text.trim(),
+                                ).fetchdata();
+                                print("yeh rha bhai ////// \n");
+                                print(data);
+                                if (data == 1) {
+                                  state.controller.stateMachine
+                                      .trigger("login_success")
+                                      ?.fire();
+                                  await Future.delayed(Duration(seconds: 4));
+                                  hive().setval();
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Newsscreen22(idx:0,pg:1),
+                                      ),
+                                    );
+                                } else if (data == 2) {
+                                  state.controller.stateMachine
+                                      .trigger("login_fail")
+                                      ?.fire();
+                                  await Future.delayed(Duration(seconds: 2));
+                                  bottomsheet(
+                                    context,
+                                    "you seems like new user , aren't you",
+                                    v.text.trim(),x.text.trim()
+                                  );
+                                }
+                                else{
+                                  WidgetsBinding.instance.addPostFrameCallback((_){
+                                    tst(context, "please ,try again", ToastificationType.info);
+                                  });
+                                }
+                              },
+
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 55,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(28),
+                                  gradient: LinearGradient(
+                                    colors: [Colors.pink, Colors.blue],
+                                    begin: AlignmentGeometry.topEnd,
+                                    end: AlignmentGeometry.bottomLeft,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "Submit",
+                                    style: TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w300,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 40),
+                      ],
+                    ),
+                  ],
                 ),
-                height: 250,
-                width: MediaQuery.of(context).size.height,
-                child: Image.asset("assets/loginit2.jpg", fit: BoxFit.cover),
-              ),
-            ),
-            SizedBox(height: 30),
-            TextField(
-              controller: email,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    color: Colors.black,
-                    width: 2,
-                    style: BorderStyle.solid,
-                  ),
-                ),
-                hintText: "Emial-here",
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.greenAccent, width: 2),
-                ),
-                suffix: Icon(Icons.email),
-              ),
-              autofocus: true,
-              keyboardType: TextInputType.emailAddress,
-              maxLength: 25,
-            ),
-            SizedBox(height: 30),
-            TextField(
-              controller: password,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    color: Colors.black,
-                    width: 2,
-                    style: BorderStyle.solid,
-                  ),
-                ),
-                hintText: "Password here",
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.greenAccent, width: 2),
-                ),
-                suffix: Icon(Icons.password),
-              ),
-              autofocus: true,
-              keyboardType: TextInputType.text,
-              maxLength: 20,
-            ),
-            SizedBox(height: 35),
-            ElevatedButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder:(context) => loginwrap(email: email.text.trim(), password: password.text.trim()),));
-            }, child: Center(child: Text("𝕧𝕖𝕣𝕚𝕗𝕪"))),
-          ],
+              )
         ),
-      ),
+        RiveFailed() => Center(
+          child: Text("internal problem, comeback later 😫😫"),
+        ),
+      },
     );
   }
 }

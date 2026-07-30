@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "514608821242",
+    "project_id": "learning-fdf2c",
+    "storage_bucket": "learning-fdf2c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514608821242:android:51fb658ee373714130aa43",
+        "android_client_info": {
+          "package_name": "com.relosnews.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD3-TBPSxAH_eXqf2L00ia5aWUnISPIA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

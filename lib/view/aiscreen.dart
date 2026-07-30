@@ -23,33 +23,36 @@ class _aiscreenState extends State<aiscreen> {
             print("${snapshot.data}");
             return Scaffold(
               body: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(height: 40,),
-                    ConstrainedBox(constraints: BoxConstraints(
-                      maxWidth:MediaQuery.of(context).size.width
-                    ),child: Center(child: Text("Summarizing with AI 😎😎"),),),
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsetsGeometry.all(20),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxWidth: MediaQuery.of(context).size.width,
-                            ),
-                            child: AnimatedTextKit(
-                              repeatForever: false,
-                              isRepeatingAnimation: false,
+                child: Hero(
+                  tag: "Ai screen",
+                  child: Column(
+                    children: [
+                      SizedBox(height: 40,),
+                      ConstrainedBox(constraints: BoxConstraints(
+                        maxWidth:MediaQuery.of(context).size.width
+                      ),child: Center(child: Text("Summarizing with AI 😎😎"),),),
+                        Center(
+                          child: Padding(
+                            padding: EdgeInsetsGeometry.all(20),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                maxWidth: MediaQuery.of(context).size.width,
+                              ),
+                              child: AnimatedTextKit(
+                                repeatForever: false,
+                                isRepeatingAnimation: false,
 
-                              animatedTexts: [
-                                TypewriterAnimatedText(
-                                  "${snapshot.data?.status.toString()}",
-                                ),
-                              ],
+                                animatedTexts: [
+                                  TypewriterAnimatedText(
+                                    "${snapshot.data?.status.toString()}",
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

@@ -1,26 +1,28 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
-class registerservice{
+class verifyservice{
   var dio=Dio();
-  Future  fetchdata6(String email,String password) async {
+  Future<int> fetchdata6(String email,int otp,Object data) async {
     try {
+      print("3");
+      print(email);
       var response = await dio.post(
-          "https://news-project-data-2.onrender.com/users/login/$email/$password",
+          "https://news-project-data-2.onrender.com/users/$email/$otp",
+        data: jsonEncode(data)
           );
       if (response.statusCode == 200) {
-        return "ok";
+        return 1;
       }
-      else if(response.statusCode==408){
-        return "otp invalid";
-      }
-      else if(response.statusCode==410){
-        return "otp expired";
+      else if(response.statusCode==282){
+        return 2;
       }
       else {
-        throw Exception("invald");
+        return 0;
       }
     }
     catch(err){
-      throw Exception("invalid 2");
+      throw Exception("invalid for processing");
     }
   }
 }
