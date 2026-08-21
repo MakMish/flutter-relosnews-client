@@ -6,6 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
      return "coul not launch browser";
    }
    else{
-     return content.toString();
+     return await launchUrl(content,mode:LaunchMode.inAppWebView);
    }
  }

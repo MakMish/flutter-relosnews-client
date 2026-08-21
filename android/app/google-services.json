@@ -7,12 +7,57 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:514608821242:android:38fc1e764b85d1f530aa43",
+        "android_client_info": {
+          "package_name": "com.example.riv_ki_prac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514608821242-12ksndkg1mng3nd0crvdnaie4lv5l2qt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.riv_ki_prac",
+            "certificate_hash": "207ef04f72af3a24047886da47cd08cc8d952210"
+          }
+        },
+        {
+          "client_id": "514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD3-TBPSxAH_eXqf2L00ia5aWUnISPIA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:514608821242:android:51fb658ee373714130aa43",
         "android_client_info": {
           "package_name": "com.relosnews.app"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "514608821242-cklh0jrmnavvu24s4mp6bs4hc3kccpkl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.relosnews.app",
+            "certificate_hash": "207ef04f72af3a24047886da47cd08cc8d952210"
+          }
+        },
         {
           "client_id": "514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com",
           "client_type": 3

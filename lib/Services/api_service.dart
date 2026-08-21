@@ -20,7 +20,7 @@ class api_service_Services {
         print("called");
         print("dta is ${response.data}");
         print("data geted");
-        return api_service.fromJson(response.data);
+        return api_service.fromJson(response.data);  //api_service model class ka naam hai
       } else {
         throw Exception("Failed to load data");
       }
