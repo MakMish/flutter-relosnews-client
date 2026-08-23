@@ -140,6 +140,13 @@ class _animscrState extends State<animscr> {
                         height: 50,
                         child: ElevatedButton.icon(
                           onPressed: () async{
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              tst(
+                                context,
+                                "verifying,please wait",
+                                ToastificationType.success,
+                              );
+                            });
                             try{
                               final GoogleSignInAccount user =
                               await GoogleSignIn.instance.authenticate();
