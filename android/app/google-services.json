@@ -51,6 +51,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "514608821242-ce8d9a6l6u0lmp3c13o2g39fe6m1feeh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.relosnews.app",
+            "certificate_hash": "c5739289905b06d0cc9e355ed8266060fadf51d9"
+          }
+        },
+        {
           "client_id": "514608821242-cklh0jrmnavvu24s4mp6bs4hc3kccpkl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
