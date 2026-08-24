@@ -153,7 +153,7 @@ lib/
 
 # 🎥 App Demo Video
 
-[▶ Watch App Demo](https://drive.google.com/file/d/1giwvB1HVkcGDnpFYySmV5l8Cedk8R_aA/view?usp=drive_link)
+[▶ Watch App Demo](https://github.com/user-attachments/assets/f092696d-bd22-4331-80c4-c44c4499711b)
 
 ---
 
