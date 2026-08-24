@@ -95,49 +95,59 @@ lib/
 
 ## 🚀 Splash Screen
 
-![Splash Screen](screenshots/1787577308337.jpg)
+![Splash Screen](screenshots/1787577308344.jpg)
 
 ---
 
 ## 📰 Main News Swipe Screen
 
-![News Screen](screenshots/News_screen.jpg)
+![News Screen](screenshots/1787577308307.jpg)
+
+---
+## 📰 Main News Swipe Screen
+
+![News Screen](screenshots/1787577308277.jpg)
+
+---
+## 🔢 AI-Billing Screen
+
+![OTP Verification](screenshots/1787577308292.png)
 
 ---
 
 ## 🤖 AI Hinglish Summarization
 
-![AI Summarizer](screenshots/AI-Summarizer.jpg)
+![AI Summarizer](screenshots/1787577308284.jpg)
 
 ---
 
 ## 🌐 In-App Browser View
 
-![In-App Browser](screenshots/inapp_news_expand.jpg)
+![In-App Browser](screenshots/1787577308299.jpg)
 
 ---
 
 ## 🔐 Login Screen
 
-![Login Screen](screenshots/login_screen.jpg)
+![Login Screen](screenshots/1787577308337.jpg)
 
 ---
 
 ## 📝 Register Screen
 
-![Register Screen](screenshots/register_screen.jpg)
+![Register Screen](screenshots/1787577308322.jpg)
 
 ---
 
 ## 📧 OTP Email Verification
 
-![Email OTP](screenshots/email-otp-verify.png)
+![Email OTP](screenshots/1787577308329.png)
 
 ---
 
 ## 🔢 OTP Verification Screen
 
-![OTP Verification](screenshots/otp-verification.jpg)
+![OTP Verification](screenshots/1787577308314.png)
 
 ---
 
