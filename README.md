@@ -111,7 +111,7 @@ lib/
 ---
 ## 🔢 AI-Billing Screen
 
-![OTP Verification](screenshots/1787577308292.png)
+![OTP Verification](screenshots/1787577308292.jpg)
 
 ---
 
@@ -141,13 +141,13 @@ lib/
 
 ## 📧 OTP Email Verification
 
-![Email OTP](screenshots/1787577308329.png)
+![Email OTP](screenshots/1787577308329.jpg)
 
 ---
 
 ## 🔢 OTP Verification Screen
 
-![OTP Verification](screenshots/1787577308314.png)
+![OTP Verification](screenshots/1787577308314.jpg)
 
 ---
 
