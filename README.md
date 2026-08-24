@@ -34,7 +34,7 @@
 - **AI Summarization:** Gemini API  
 - **News Provider:** NewsAPI.org  
 - **Backend Deployment:** Render  
-- **Database Hosting:** Render PostgreSQL  
+- **Database Hosting:** Neon PostgreSQL  
 - **Programming Style:** Asynchronous Programming  
 - **Pagination:** Page Size = 50  
 
@@ -95,7 +95,7 @@ lib/
 
 ## 🚀 Splash Screen
 
-![Splash Screen](screenshots/splash_screen.jpg)
+![Splash Screen](screenshots/1787577308337.jpg)
 
 ---
 
