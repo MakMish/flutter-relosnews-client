@@ -23,11 +23,10 @@ void main() async {
   await Firebase.initializeApp();
   await Hive.initFlutter();
   await Hive.openBox("verified");
-  await GoogleSignIn.instance.initialize(
-    serverClientId:
-    "514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com",
-  );
   await RiveNative.init();
+  await GoogleSignIn.instance.initialize(
+    serverClientId:"514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com"
+  );
   FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
@@ -67,12 +66,6 @@ class _MyAppState extends State<MyApp> {
     PaintingBinding.instance.imageCache.clear();
     PaintingBinding.instance.imageCache.clearLiveImages();
     super.dispose();
-  }
-  Future<void> _initializeGoogleSignIn() async {
-    await GoogleSignIn.instance.initialize(
-      serverClientId:
-      "514608821242-32hkjoto0oot3641k8qgd7n00m8jo92u.apps.googleusercontent.com",
-    );
   }
   Future<void> initFCM() async {
       await FirebaseMessaging.instance.requestPermission();   // don't forget to add fcm background handler befor void main app

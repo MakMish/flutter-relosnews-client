@@ -148,27 +148,32 @@ class _animscrState extends State<animscr> {
                               );
                             });
                             try{
-                              final GoogleSignInAccount user =
+                              final GoogleSignInAccount? user =
                               await GoogleSignIn.instance.authenticate();
 
-                              print("Google user: ${user.email}");
+                               if (user != null) {
+                                 final email = user.email;
+                                 print("\n\n\n here it is $email \n\n\n\n");
+                                 state.controller.stateMachine
+                                     .trigger("login_success")
+                                     ?.fire();
 
-                              state.controller.stateMachine
-                                  .trigger("login_success")
-                                  ?.fire();
+                                 await Future.delayed(const Duration(seconds: 4));
 
-                              await Future.delayed(const Duration(seconds: 4));
+                                 hive().setval();
 
-                              hive().setval();
+                                 if (!mounted) return;
 
-                              if (!mounted) return;
-
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Newsscreen22(idx: 0, pg: 1),
-                                ),
-                              );
+                                 Navigator.pushReplacement(
+                                   context,
+                                   MaterialPageRoute(
+                                     builder: (context) => Newsscreen22(
+                                       idx: 0,
+                                       pg: 1,
+                                     ),
+                                   ),
+                                 );
+                               }
                             }
                             catch (e, stackTrace) {
                               print("GOOGLE SIGN-IN ERROR: $e");

@@ -44,7 +44,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:514608821242:android:51fb658ee373714130aa43",
+        "mobilesdk_app_id": "1:514608821242:android:da14132eaedf75a330aa43",
         "android_client_info": {
           "package_name": "com.relosnews.app"
         }
@@ -64,6 +64,14 @@
           "android_info": {
             "package_name": "com.relosnews.app",
             "certificate_hash": "207ef04f72af3a24047886da47cd08cc8d952210"
+          }
+        },
+        {
+          "client_id": "514608821242-kl1jl2884galnbuj7pdfclf6sfsrp7sf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.relosnews.app",
+            "certificate_hash": "389ea735a513cc6e2a4f289b7e6d9f52cc010fee"
           }
         },
         {
